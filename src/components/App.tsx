@@ -17,16 +17,16 @@ const App: React.FC<AppProps> = ({ mode }) => {
       {mode === 'overlay' ? (
         <div className="p-4 space-y-2">
           {/* Drag handle for moving the window */}
-          <div className="drag-handle cursor-move bg-gray-800 bg-opacity-50 p-2 rounded">
-            <h1 className="text-lg font-bold text-white">TFTier Overlay</h1>
+          <div className="drag-handle cursor-move bg-gray-800 bg-opacity-50 p-3 rounded">
+            <h1 className="text-2xl font-bold text-white">TFTier Overlay</h1>
           </div>
           {/* Overlay content */}
           <OverlayView />
         </div>
       ) : (
         <div>
-          <div className="drag-handle cursor-move bg-gray-800 bg-opacity-50 p-2 rounded">
-            <h1 className="text-lg font-bold text-white">TFTier Summary</h1>
+          <div className="drag-handle cursor-move bg-gray-800 bg-opacity-50 p-3 rounded">
+            <h1 className="text-2xl font-bold text-white">TFTier Summary</h1>
           </div>
           <SummaryView />
         </div>

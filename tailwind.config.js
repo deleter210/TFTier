@@ -1,16 +1,20 @@
+// tailwind.config.js
 module.exports = {
-    mode: 'jit',
-    purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/*.html'],
-    darkMode: false,
-    theme: {
-      extend: {
-        colors: {
-          primary: "#f59e0b",
-          background: "#1f2937",
-          overlay: "rgba(0, 0, 0, 0.5)"
-        }
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+    "./dist/*.html"
+  ],
+  theme: {
+    extend: {
+      colors: {
+        primary: '#1A1A1A',  // Dark background
+        accent: '#00FF99',   // Vibrant accent (for buttons, highlights)
+        text: '#F5F5F5',     // Light text for readability
+      },
+      fontFamily: {
+        sans: ['Inter', 'Roboto', 'sans-serif']
       }
     },
-    plugins: []
-  };
-  
+  },
+  plugins: [],
+}
