@@ -25,16 +25,16 @@
     "start_window": "BackgroundWindow",
     "windows": {
       "OverlayWindow": {
-        "file": "dist/overlay.html",
-        "in_game_only": true,
-        "transparent": true,
-        "clickthrough": true,
-        "size": { "width": 1920, "height": 1080 },
-        "resizable": false,
-        "show_in_taskbar": false,
-        "topmost": true,
-        "block_top_window_navigation": true
-      },
+  "file": "dist/overlay.html",
+  "in_game_only": true,
+  "transparent": true,
+  "clickthrough": true,
+  "size": { "width": 1920, "height": 1080 },
+  "resizable": true,         
+  "show_in_taskbar": false,
+  "topmost": true,
+  "block_top_window_navigation": true
+},
       "SummaryWindow": {
         "file": "dist/summary.html",
         "in_game_only": false,
