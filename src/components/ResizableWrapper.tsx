@@ -1,5 +1,4 @@
 // src/components/ResizableWrapper.tsx
-
 import React, { ReactNode } from 'react';
 import { Rnd } from 'react-rnd';
 
