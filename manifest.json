@@ -4,7 +4,7 @@
   "meta": {
     "name": "TFTier",
     "author": "TFTier dev team",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "minimum-overwolf-version": "0.200.0",
     "description": "A Teamfight Tactics companion app with live overlay, detailed post-game summary and real-time analytics.",
     "dock_button_title": "TFTier",
