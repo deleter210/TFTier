@@ -27,7 +27,7 @@ const SummaryView: React.FC = () => {
   if (!matchData) return <Loader />;
 
   return (
-    <div className="bg-backdrop text-white min-h-screen p-8 font-sans">
+    <div className="bg-backdrop text-white min-h-screen p-8 font-sans shadow-overlay">
       <h1 className="text-3xl font-bold mb-6">Post-Game Summary</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <Card title="Final Placement">
