@@ -46,7 +46,7 @@ const GoldCurveGraph: React.FC<GoldCurveGraphProps> = ({ goldHistory }) => {
 
   return (
     <Card title="Gold Curve">
-      <svg ref={svgRef}></svg>
+      <svg ref={svgRef} className="mx-auto"></svg>
     </Card>
   );
 };
