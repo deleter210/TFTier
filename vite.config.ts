@@ -10,20 +10,19 @@ export default defineConfig({
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        'overlay.html': path.resolve(__dirname, 'overlay.html'),
-        'summary.html': path.resolve(__dirname, 'summary.html'),
-        'background.html': path.resolve(__dirname, 'background.html'),
+        overlay: path.resolve(__dirname, 'public/overlay.html'),
+        summary: path.resolve(__dirname, 'public/summary.html'),
+        background: path.resolve(__dirname, 'public/background.html')
       },
       output: {
         entryFileNames: 'assets/[name].js',
         chunkFileNames: 'assets/[name].js',
-        assetFileNames: 'assets/[name][extname]',
-        manualChunks: undefined,
-      },
-    },
+        assetFileNames: 'assets/[name][extname]'
+      }
+    }
   },
   server: {
     port: 5173,
-    strictPort: true,
-  },
+    strictPort: true
+  }
 });
