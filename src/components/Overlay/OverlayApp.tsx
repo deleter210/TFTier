@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import GoldTracker from './GoldTracker';
 import StreakTracker from './StreakTracker';
 import GoldCurveGraph from './GoldCurveGraph';
+import ItemCheatSheet from './ItemCheatSheet';
+import PinnedComps from './PinnedComps';
 
 const OverlayApp: React.FC = () => {
   const [gold, setGold] = useState(0);
@@ -20,22 +22,27 @@ const OverlayApp: React.FC = () => {
             return newHist;
           });
         }
-        // Add logic here for streak detection if needed
       });
     }, 1000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="overlay-ui fixed inset-0 pointer-events-none">
-      <div className="absolute top-2 left-2">
+    <div className="overlay-ui fixed inset-0 pointer-events-none text-white font-sans">
+      <div className="absolute top-2 left-2 pointer-events-auto">
         <GoldTracker gold={gold} />
       </div>
-      <div className="absolute top-2 right-2">
+      <div className="absolute top-2 right-2 pointer-events-auto">
         <StreakTracker streak={streak} />
       </div>
-      <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2">
+      <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 pointer-events-auto">
         <GoldCurveGraph goldHistory={goldHistory} />
+      </div>
+      <div className="absolute top-24 left-2 w-[300px] pointer-events-auto">
+        <ItemCheatSheet />
+      </div>
+      <div className="absolute top-24 right-2 w-[300px] pointer-events-auto">
+        <PinnedComps />
       </div>
     </div>
   );

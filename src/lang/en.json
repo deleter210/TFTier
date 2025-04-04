@@ -1,0 +1,10 @@
+{
+  "gold": "Gold",
+  "streak.win": "Win Streak",
+  "streak.loss": "Loss Streak",
+  "loading_items": "Loading items...",
+  "pinned.title": "Pinned Comps",
+  "pinned.remove": "Remove",
+  "pinned.add": "Add",
+  "pinned.placeholder": "Comp name or notes..."
+}
