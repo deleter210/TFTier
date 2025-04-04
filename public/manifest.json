@@ -102,6 +102,23 @@
           "Left": 100
         },
         "taskbar_title": "TFTier - Config"
+      },
+      "dashboard": {
+        "file": "dashboard.html",
+        "desktop_only": true,
+        "resizable": true,
+        "singleton": true,
+        "native_window": true,
+        "show_in_taskbar": true,
+        "size": {
+          "width": 1280,
+          "height": 720
+        },
+        "start_position": {
+          "Top": 100,
+          "Left": 100
+        },
+        "taskbar_title": "TFTier Dashboard"
       }
     },
     "externally_connectable": {
