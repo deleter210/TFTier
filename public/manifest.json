@@ -17,7 +17,7 @@
     "profile"
   ],
   "data": {
-    "start_window": "config",
+    "start_window": "dashboard",
     "game_targeting": {
       "type": "dedicated",
       "game_ids": [
@@ -88,20 +88,6 @@
           "height": 600
         },
         "in_game_only": false
-      },
-      "config": {
-        "file": "dashboard.html",
-        "desktop_only": true,
-        "resizable": true,
-        "size": {
-          "width": 1280,
-          "height": 800
-        },
-        "start_position": {
-          "Top": 100,
-          "Left": 100
-        },
-        "taskbar_title": "TFTier - Config"
       },
       "dashboard": {
         "file": "dashboard.html",
