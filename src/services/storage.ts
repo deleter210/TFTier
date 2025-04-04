@@ -11,9 +11,10 @@ interface TFTierExtensionSettings extends Partial<Record<TFTierStorageKeys, any>
 // Load pinned team comps
 export function loadPinnedComps(): Promise<any[]> {
   return new Promise(resolve => {
-    overwolf.settings.getExtensionSettings((res: { success: boolean; settings: TFTierExtensionSettings }) => {
+    overwolf.settings.getExtensionSettings(res => {
+      const settings = res.settings as TFTierExtensionSettings;
       if (res.success) {
-        resolve(res.settings?.tftier_comps ?? []);
+        resolve(settings?.tftier_comps ?? []);
       } else {
         resolve([]);
       }
@@ -33,9 +34,10 @@ export function savePinnedComps(data: any[]): void {
 // Load cached cheat sheet
 export function loadCheatSheetCache(): Promise<any> {
   return new Promise(resolve => {
-    overwolf.settings.getExtensionSettings((res: { success: boolean; settings: TFTierExtensionSettings }) => {
+    overwolf.settings.getExtensionSettings(res => {
+      const settings = res.settings as TFTierExtensionSettings;
       if (res.success) {
-        resolve(res.settings?.tftier_cache ?? null);
+        resolve(settings?.tftier_cache ?? null);
       } else {
         resolve(null);
       }
