@@ -2,12 +2,11 @@ type InfoUpdates = { [feature: string]: any };
 type NewGameEvent = { name: string, data: any };
 
 export function initGameEventListeners() {
-  overwolf.games.events.setRequiredFeatures(['me', 'match_info', 'roster', 'board'], result => {
-    if (result.success === 'error') {
-      console.error('Failed to set required features:', result.reason);
-    }
-  });
-
+  if (!res.success) {
+    console.error("Failed to set required features for TFT events:", res.error);
+  } else {
+    console.log("Required features set:", res.supportedFeatures);
+  }
   overwolf.games.events.onInfoUpdates2.addListener(payload => {
     const info = payload?.info as InfoUpdates;
     if (!info) return;
