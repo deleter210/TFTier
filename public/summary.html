@@ -3,9 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <title>TFTier Summary</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#111827" />
     <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval';"/>
+    <script src="https://content.overwolf.com/libs/ads/latest/owads.min.js" async onerror="onAdsSDKNotLoaded()" onload="onAdsSDKReady()"></script>
+    <link rel="stylesheet" href="../src/styles/tokens.css" />
   </head>
-  <body>
+  <body class="bg-backdrop">
     <div id="root"></div>
     <script type="module" src="../src/windows/summary.tsx"></script>
   </body>
