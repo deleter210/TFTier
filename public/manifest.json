@@ -13,18 +13,28 @@
     "launcher_icon": "icons/desktop.ico",
     "window_icon": "icons/window.png"
   },
-  "permissions": ["profile"],
+  "permissions": [
+    "profile"
+  ],
   "data": {
-    "start_window": "background",
+    "start_window": "config",
     "game_targeting": {
       "type": "dedicated",
-      "game_ids": [5426]
+      "game_ids": [
+        5426
+      ]
     },
-    "game_events": [5426],
+    "game_events": [
+      5426
+    ],
     "launch_events": [
       {
         "event": "GameLaunch",
-        "event_data": { "game_ids": [5426] },
+        "event_data": {
+          "game_ids": [
+            5426
+          ]
+        },
         "start_minimized": true
       }
     ],
@@ -44,7 +54,10 @@
         "in_game_only": true,
         "block_top_window": true,
         "override_on_update": true,
-        "size": { "width": 1920, "height": 1080 },
+        "size": {
+          "width": 1920,
+          "height": 1080
+        },
         "topmost": true,
         "disable_restore_animation": true
       },
@@ -54,8 +67,14 @@
         "resizable": true,
         "desktop_only": true,
         "native_window": true,
-        "size": { "width": 1280, "height": 720 },
-        "start_position": { "Top": 100, "Left": 100 },
+        "size": {
+          "width": 1280,
+          "height": 720
+        },
+        "start_position": {
+          "Top": 100,
+          "Left": 100
+        },
         "taskbar_title": "TFTier Summary"
       },
       "auth": {
@@ -64,12 +83,31 @@
         "desktop_only": true,
         "singleton": true,
         "show_in_taskbar": false,
-        "size": { "width": 400, "height": 600 },
+        "size": {
+          "width": 400,
+          "height": 600
+        },
         "in_game_only": false
+      },
+      "config": {
+        "file": "config.html",
+        "desktop_only": true,
+        "resizable": true,
+        "size": {
+          "width": 1280,
+          "height": 800
+        },
+        "start_position": {
+          "Top": 100,
+          "Left": 100
+        },
+        "taskbar_title": "TFTier - Config"
       }
     },
     "externally_connectable": {
-      "matches": ["http://localhost:5173/*"]
+      "matches": [
+        "http://localhost:5173/*"
+      ]
     },
     "protocol_override_domains": {
       "googlesyndication": "http"
