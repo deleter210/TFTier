@@ -10,9 +10,9 @@ export default defineConfig({
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        overlay: path.resolve(__dirname, 'public/overlay.html'),
-        summary: path.resolve(__dirname, 'public/summary.html'),
-        background: path.resolve(__dirname, 'public/background.html'),
+        'overlay.html': path.resolve(__dirname, 'overlay.html'),
+        'summary.html': path.resolve(__dirname, 'summary.html'),
+        'background.html': path.resolve(__dirname, 'background.html'),
       },
       output: {
         entryFileNames: 'assets/[name].js',
