@@ -13,7 +13,6 @@ export default defineConfig({
 
       dashboard: path.resolve(__dirname, 'public/dashboard.html'),
 
-      config: path.resolve(__dirname, "public/config.html"),
         overlay: path.resolve(__dirname, 'public/overlay.html'),
         summary: path.resolve(__dirname, 'public/summary.html'),
         background: path.resolve(__dirname, 'public/background.html')
