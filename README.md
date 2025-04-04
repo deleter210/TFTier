@@ -1,103 +1,114 @@
-# TFTier – Companion App for Teamfight Tactics
+# TFTier – Overwolf Companion App for Teamfight Tactics
 
-TFTier is a production-ready Overwolf companion app designed to elevate your Teamfight Tactics gameplay with real-time overlays, analytics, and tracking.
-
-Built with **React**, **Vite**, **Tailwind CSS**, and **Overwolf's GEP**, it delivers an optimized experience for competitive players.
+TFTier is a feature-rich Overwolf desktop app that enhances your Teamfight Tactics experience with real-time overlays, match summaries, pinned team comps, and data visualizations powered by Riot's API and Data Dragon.
 
 ---
 
 ## 🚀 Features
 
-- **💰 Real-time Gold Tracker**
-- **🔥 Streak Tracker** with Win/Loss detection
-- **📈 Gold Curve Graph** (via D3.js)
-- **🧠 Item Cheat Sheet** from Riot's Data Dragon
-- **📌 Pinned Team Comps** saved using Overwolf storage
-- **🪟 Multi-Window Layout**: Overlay, Summary, Background
-- **🔒 Environment-safe Riot API integration**
-- **🌍 i18n support** (English, extensible)
+- 🎯 **Real-Time Overlay** – Displays gold, win streaks, and live match data.
+- 📊 **Post-Game Summary** – Final placement, gold chart, round details.
+- 📚 **Cheat Sheet** – In-game item combination and champion info.
+- 📌 **Pinned Comps** – Save and reference team compositions.
+- 🌐 **i18n Support** – English localization, structured for more languages.
+- ⚙️ **Overwolf Compliant** – Manifest includes multi-window config.
+- 📈 **D3.js Graphs** – Gold curve and performance visualizations.
+- 🔐 **Environment Secure** – API keys are managed through `.env`.
 
 ---
 
-## 🛠️ Development Setup
+## 🧱 Tech Stack
 
+- [React 18](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Headless UI](https://headlessui.dev/)
+- [D3.js](https://d3js.org/)
+- [Vite](https://vitejs.dev/) (multi-entry)
+- [Overwolf SDK](https://overwolf.github.io/) (via manifest)
+
+---
+
+## 📦 Installation (Dev)
+
+1. Clone the repository:
+```bash
+git clone https://github.com/deleter210/TFTier.git
+cd TFTier
+```
+
+2. Install dependencies:
 ```bash
 npm install
+```
+
+3. Create your `.env`:
+```bash
+cp .env.example .env
+# Fill in your Riot API key and Overwolf App ID
+```
+
+4. Run the dev server:
+```bash
 npm run dev
 ```
 
-- Dev server: http://localhost:5173/
-- Overlay: `http://localhost:5173/overlay.html`
-- Summary: `http://localhost:5173/summary.html`
-
-> Overwolf manifest auto-points to local dev URLs during development.
+5. Open Overwolf Developer Console:
+   - Load the app as an unpacked extension.
+   - Use `http://localhost:5173/overlay.html` for overlay window, etc.
 
 ---
 
-## 📦 Build for Production
+## 🛠️ Production Build
 
 ```bash
 npm run build
 ```
+Output goes to `dist/`:
+```
+dist/
+├── overlay.html
+├── summary.html
+├── background.html
+├── assets/
+├── manifest.json
+```
 
-- Output: `/dist`
-- Load the `dist` folder as an unpacked Overwolf app for testing
+This can be zipped and submitted to the Overwolf App Store.
 
 ---
 
-## 📁 Project Structure
+## 📁 Folder Structure
 
-```bash
+```
 TFTier/
-├── public/
-│   ├── icons/              # Required icons (see Overwolf docs)
-│   └── manifest.json       # Overwolf manifest
+├── public/              # HTML files, manifest, icons
 ├── src/
-│   ├── components/         # Overlay UI components
-│   ├── services/           # Riot API, GEP, cache, i18n
-│   ├── windows/            # Entry scripts & HTML
-│   └── styles.css          # Tailwind base
-├── vite.config.ts          # Vite multi-page config
-└── tsconfig.json           # TypeScript config
+│   ├── components/      # React UI components (Overlay, Summary)
+│   ├── services/        # Riot API, game event logic, storage
+│   ├── windows/         # Vite entry scripts (overlay.tsx, summary.tsx, background.ts)
+├── .env.example         # Example config
+├── vite.config.ts       # Vite multi-entry config
+├── tailwind.config.js
 ```
 
 ---
 
-## 🔑 Environment Variables
+## 🔒 Environment Variables
 
-Copy `.env.example` to `.env` and add:
-
-```env
-VITE_RIOT_API_KEY=RGAPI_XXXXXXXXXXXX
+`.env.example`:
+```bash
+VITE_RIOT_API_KEY=your-riot-api-key
 OVERWOLF_APP_ID=com.tftier.app
 ```
 
-> Never commit `.env` to source control.
+---
+
+## 📃 License
+
+MIT
 
 ---
 
-## 🎮 Target Game
-
-- **Teamfight Tactics** (Game ID: `5426`)
-- Uses Overwolf Game Events Provider for real-time tracking
-
----
-
-## 📚 Resources
-
-- [Overwolf Developer Docs](https://overwolf.github.io/docs)
-- [Riot Developer Portal](https://developer.riotgames.com)
-- [Data Dragon](https://ddragon.leagueoflegends.com/)
-
----
-
-## 🧪 Status
-
-This version is production-ready and tagged as:
-
-```
-v1.0.0
-```
-
-You may submit it to the Overwolf App Store or load it as an unpacked extension for testing.
+For issues, suggestions, or contributions, open a [GitHub Issue](https://github.com/deleter210/TFTier/issues).
 
