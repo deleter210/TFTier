@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    @apply bg-gray-900 text-white font-sans;
+  }
+  .bg-backdrop {
+    @apply bg-gray-800 bg-opacity-80 backdrop-blur-md;
+  }
+  .text-gold {
+    @apply text-yellow-400;
+  }
+  .shadow-overlay {
+    @apply shadow-xl shadow-black/50;
+  }
+}
