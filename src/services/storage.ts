@@ -1,54 +1,53 @@
 /**
- * Simple caching and pinned comp storage layer using overwolf.settings
+ * Local persistent storage using Overwolf Extension Settings.
  */
 
-const SETTINGS_KEY = 'tftier_comps';
-const CACHE_KEY = 'tftier_cache';
+// Define allowed storage keys
+type TFTierStorageKeys = 'tftier_comps' | 'tftier_cache';
 
-export const pinnedComps = {
-  async get(): Promise<any[]> {
-    return new Promise(resolve => {
-      overwolf.settings.getExtensionSettings(result => {
-        if (result.success && result.settings) {
-          const data = JSON.parse(result.settings[SETTINGS_KEY] || '[]');
-          resolve(data);
-        } else {
-          resolve([]);
-        }
-      });
-    });
-  },
+// Extend Overwolf's settings typing
+interface TFTierExtensionSettings extends Partial<Record<TFTierStorageKeys, any>> {}
 
-  async set(data: any[]): Promise<void> {
-    return new Promise(resolve => {
-      const settings: Record<string, any> = {};
-      settings[SETTINGS_KEY] = JSON.stringify(data);
-      overwolf.settings.setExtensionSettings({ settings }, () => resolve());
+// Load pinned team comps
+export function loadPinnedComps(): Promise<any[]> {
+  return new Promise(resolve => {
+    overwolf.settings.getExtensionSettings((res: { success: boolean; settings: TFTierExtensionSettings }) => {
+      if (res.success) {
+        resolve(res.settings?.tftier_comps ?? []);
+      } else {
+        resolve([]);
+      }
     });
-  },
-};
+  });
+}
 
-export const cacheJSON = {
-  async get(key: string): Promise<any | null> {
-    return new Promise(resolve => {
-      overwolf.settings.getExtensionSettings(result => {
-        const raw = result?.settings?.[CACHE_KEY];
-        const parsed = raw ? JSON.parse(raw) : {};
-        resolve(parsed[key] || null);
-      });
-    });
-  },
+// Save pinned team comps
+export function savePinnedComps(data: any[]): void {
+  overwolf.settings.setExtensionSettings({
+    ["tftier_comps"]: data
+  }, () => {
+    console.log("Pinned comps saved");
+  });
+}
 
-  async set(key: string, value: any): Promise<void> {
-    return new Promise(resolve => {
-      overwolf.settings.getExtensionSettings(result => {
-        const raw = result?.settings?.[CACHE_KEY];
-        const parsed = raw ? JSON.parse(raw) : {};
-        parsed[key] = value;
-        const settings: Record<string, any> = {};
-        settings[CACHE_KEY] = JSON.stringify(parsed);
-        overwolf.settings.setExtensionSettings({ settings }, () => resolve());
-      });
+// Load cached cheat sheet
+export function loadCheatSheetCache(): Promise<any> {
+  return new Promise(resolve => {
+    overwolf.settings.getExtensionSettings((res: { success: boolean; settings: TFTierExtensionSettings }) => {
+      if (res.success) {
+        resolve(res.settings?.tftier_cache ?? null);
+      } else {
+        resolve(null);
+      }
     });
-  },
-};
+  });
+}
+
+// Save cheat sheet cache
+export function saveCheatSheetCache(data: any): void {
+  overwolf.settings.setExtensionSettings({
+    ["tftier_cache"]: data
+  }, () => {
+    console.log("Cheat sheet cache saved");
+  });
+}
