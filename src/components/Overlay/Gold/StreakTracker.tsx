@@ -10,7 +10,7 @@ const StreakTracker: React.FC<StreakTrackerProps> = ({ streak }) => {
   return (
     <Card title="Current Streak">
       <div
-        className={`text-2xl font-bold text-center p-2 rounded text-white ${
+        className={`text-2xl font-bold text-center p-4 rounded text-white shadow-overlay ${
           isWin ? 'bg-green-700' : 'bg-red-700'
         }`}
       >

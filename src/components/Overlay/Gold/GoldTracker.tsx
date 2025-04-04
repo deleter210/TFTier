@@ -8,7 +8,7 @@ interface GoldTrackerProps {
 const GoldTracker: React.FC<GoldTrackerProps> = ({ gold }) => {
   return (
     <Card title="Current Gold">
-      <div className="text-gold text-3xl font-bold text-center">
+      <div className="text-gold text-3xl font-bold text-center p-2">
         💰 {gold}g
       </div>
     </Card>
