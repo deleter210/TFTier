@@ -17,6 +17,7 @@
   "devDependencies": {
     "@overwolf/types": "github:overwolf/types",
     "@types/d3": "^7.4.3",
+    "@types/node": "^22.14.0",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.24",
     "tailwindcss": "^3.3.2",
