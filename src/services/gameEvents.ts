@@ -3,7 +3,7 @@ type NewGameEvent = { name: string, data: any };
 
 export function initGameEventListeners() {
   overwolf.games.events.setRequiredFeatures(['me', 'match_info', 'roster', 'board'], result => {
-    if (result.status === 'error') {
+    if (result.success === 'error') {
       console.error('Failed to set required features:', result.reason);
     }
   });
