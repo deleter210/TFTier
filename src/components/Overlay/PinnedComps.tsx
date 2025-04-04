@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import { pinnedComps } from '../../services/storage';
+import { loadPinnedComps, savePinnedComps } from '../../services/storage';
 
 const PinnedComps: React.FC = () => {
   const [comps, setComps] = useState<any[]>([]);
   const [newComp, setNewComp] = useState('');
 
   useEffect(() => {
-    pinnedComps.get().then(setComps);
+    loadPinnedComps().then(setComps);
   }, []);
 
   const save = async () => {
     const updated = [...comps, { id: Date.now(), text: newComp }];
-    await pinnedComps.set(updated);
+    savePinnedComps(updated);
     setComps(updated);
     setNewComp('');
   };
 
   const remove = async (id: number) => {
     const updated = comps.filter(c => c.id !== id);
-    await pinnedComps.set(updated);
+    savePinnedComps(updated);
     setComps(updated);
   };
 
