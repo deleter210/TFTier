@@ -4,7 +4,7 @@
   "meta": {
     "name": "TFTier Companion",
     "author": "TFTier Dev Team",
-    "version": "1.0.0",
+    "version": "0.0.7",
     "minimum-overwolf-version": "0.169.0",
     "description": "TFT companion with real-time overlays and post-game analysis.",
     "dock_button_title": "TFTier",
