@@ -5,6 +5,12 @@ let currentGold = 0;
 let currentStreak = 0;
 let lastHealth = 100;
 
+type InfoPayload = {
+  me?: { gold?: string; health?: string };
+  match_info?: { game_over?: any };
+  [key: string]: any;
+};
+
 export function initGameEventListeners() {
   overwolf.games.events.setRequiredFeatures(
     ['me', 'match_info', 'roster', 'board'],
@@ -19,12 +25,11 @@ export function initGameEventListeners() {
 
   overwolf.games.events.onInfoUpdates2.addListener(payload => {
     if (!payload || !payload.info) return;
-    const info = payload.info;
+    const info = payload.info as InfoPayload;
 
     if (info.me) {
       if (info.me.gold !== undefined) {
         currentGold = parseInt(info.me.gold, 10);
-        // updateOverlayGold(currentGold); // if needed
       }
       if (info.me.health !== undefined) {
         const newHealth = parseInt(info.me.health, 10);
