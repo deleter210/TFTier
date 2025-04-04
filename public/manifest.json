@@ -90,7 +90,7 @@
         "in_game_only": false
       },
       "config": {
-        "file": "config.html",
+        "file": "dashboard.html",
         "desktop_only": true,
         "resizable": true,
         "size": {
