@@ -1,26 +1,13 @@
-// src/components/Overlay/GoldTracker.tsx
+import React from 'react';
 
-import React, { useState, useEffect } from 'react';
-import Analytics from '../../core/Analytics';
+interface GoldTrackerProps {
+  gold: number;
+}
 
-const GoldTracker: React.FC = () => {
-  const [gold, setGold] = useState<number>(50);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const rounds = Analytics.getAnalyticsData().rounds;
-      if (rounds.length > 0) {
-        setGold(rounds[rounds.length - 1].gold);
-      }
-    }, 2000);
-
-    return () => clearInterval(interval);
-  }, []);
-
+const GoldTracker: React.FC<GoldTrackerProps> = ({ gold }) => {
   return (
-    <div className="bg-gray-800 bg-opacity-50 text-white p-2 rounded">
-      <h2 className="font-bold">Gold Tracker</h2>
-      <p>Current Gold: {gold}</p>
+    <div className="text-yellow-300 text-xl font-bold p-2 bg-gray-800 bg-opacity-50 rounded">
+      💰 Gold: {gold}
     </div>
   );
 };

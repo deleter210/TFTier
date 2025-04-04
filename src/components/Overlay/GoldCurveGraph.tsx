@@ -1,47 +1,47 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 
-const GoldCurveGraph: React.FC = () => {
-  const ref = useRef<SVGSVGElement | null>(null);
+interface GoldCurveGraphProps {
+  goldHistory: number[];
+}
+
+const GoldCurveGraph: React.FC<GoldCurveGraphProps> = ({ goldHistory }) => {
+  const svgRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
-    // Replace with real per-round gold data collected from GEO events.
-    const data = [
-      { round: 1, gold: 50 },
-      { round: 2, gold: 55 },
-      { round: 3, gold: 52 },
-      { round: 4, gold: 60 },
-      { round: 5, gold: 58 }
-    ];
+    if (!svgRef.current) return;
+    const svg = d3.select(svgRef.current);
+    svg.selectAll("*").remove();
 
-    const svg = d3.select(ref.current);
-    svg.selectAll('*').remove();
-    const width = 200;
-    const height = 100;
+    const width = 200, height = 100;
+    svg.attr("width", width).attr("height", height);
 
-    const xScale = d3.scaleLinear().domain([1, data.length]).range([0, width]);
-    const yScale = d3.scaleLinear().domain([
-      d3.min(data, (d) => d.gold)! - 5,
-      d3.max(data, (d) => d.gold)! + 5
-    ]).range([height, 0]);
+    if (goldHistory.length === 0) return;
+    const xScale = d3.scaleLinear().domain([0, goldHistory.length - 1]).range([0, width]);
+    const yScale = d3.scaleLinear().domain([0, d3.max(goldHistory) || 10]).range([height, 0]);
 
-    const line = d3.line<{ round: number; gold: number }>()
-      .x((d) => xScale(d.round))
-      .y((d) => yScale(d.gold));
+    const line = d3.line<number>()
+      .x((d, i) => xScale(i))
+      .y(d => yScale(d))
+      .curve(d3.curveMonotoneX);
 
-    svg.attr('width', width).attr('height', height);
-    svg.append('path')
-      .datum(data)
-      .attr('fill', 'none')
-      .attr('stroke', 'white')
-      .attr('stroke-width', 2)
-      .attr('d', line as any);
-  }, []);
+    svg.append("path")
+      .datum(goldHistory)
+      .attr("fill", "none")
+      .attr("stroke", "#FFD700")
+      .attr("stroke-width", 2)
+      .attr("d", line as any);
+
+    svg.append("circle")
+      .attr("cx", xScale(goldHistory.length - 1))
+      .attr("cy", yScale(goldHistory[goldHistory.length - 1]))
+      .attr("r", 4)
+      .attr("fill", "#FFD700");
+  }, [goldHistory]);
 
   return (
-    <div className="mt-2">
-      <h2 className="text-white font-bold">Gold Curve</h2>
-      <svg ref={ref} />
+    <div className="p-2 bg-gray-800 bg-opacity-50 rounded">
+      <svg ref={svgRef}></svg>
     </div>
   );
 };

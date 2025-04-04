@@ -1,24 +1,28 @@
-// vite.config.ts
-
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import tsconfigPaths from 'vite-tsconfig-paths';
+import path from 'path';
 
 export default defineConfig({
-  plugins: [react(), tsconfigPaths()],
+  plugins: [react()],
   base: './',
   build: {
     outDir: 'dist',
+    emptyOutDir: true,
     rollupOptions: {
       input: {
-        overlay: 'public/overlay.html',
-        summary: 'public/summary.html',
-        auth: 'public/auth.html',
-        background: 'public/background.html'
+        overlay: path.resolve(__dirname, 'src/windows/overlay.html'),
+        summary: path.resolve(__dirname, 'src/windows/summary.html'),
+        background: path.resolve(__dirname, 'src/windows/background.html')
+      },
+      output: {
+        entryFileNames: 'assets/[name].js',
+        chunkFileNames: 'assets/[name].js',
+        assetFileNames: 'assets/[name][extname]'
       }
     }
   },
   server: {
-    port: 3000
+    port: 5173,
+    strictPort: true
   }
 });

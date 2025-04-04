@@ -1,0 +1,82 @@
+{
+  "manifest_version": 1,
+  "type": "WebApp",
+  "meta": {
+    "name": "TFTier Companion",
+    "author": "TFTier Dev Team",
+    "version": "1.0.0",
+    "minimum-overwolf-version": "0.169.0",
+    "description": "TFT companion with real-time overlays and post-game analysis.",
+    "dock_button_title": "TFTier",
+    "icon": "icons/icon.png",
+    "icon_gray": "icons/icon_gray.png",
+    "launcher_icon": "icons/desktop.ico",
+    "window_icon": "icons/window.png"
+  },
+  "permissions": ["profile"],
+  "data": {
+    "start_window": "background",
+    "game_targeting": {
+      "type": "dedicated",
+      "game_ids": [5426]
+    },
+    "game_events": [5426],
+    "launch_events": [
+      {
+        "event": "GameLaunch",
+        "event_data": { "game_ids": [5426] },
+        "start_minimized": true
+      }
+    ],
+    "windows": {
+      "background": {
+        "file": "background.html",
+        "transparent": false,
+        "is_background_page": true,
+        "resizable": false,
+        "show_in_taskbar": false
+      },
+      "overlay": {
+        "file": "overlay.html",
+        "transparent": true,
+        "resizable": false,
+        "clickthrough": false,
+        "in_game_only": true,
+        "block_top_window": true,
+        "override_on_update": true,
+        "size": { "width": 1920, "height": 1080 },
+        "topmost": true,
+        "disable_restore_animation": true
+      },
+      "summary": {
+        "file": "summary.html",
+        "transparent": false,
+        "resizable": true,
+        "desktop_only": true,
+        "native_window": true,
+        "size": { "width": 1280, "height": 720 },
+        "start_position": { "Top": 100, "Left": 100 },
+        "taskbar_title": "TFTier Summary"
+      },
+      "auth": {
+        "file": "auth.html",
+        "resizable": false,
+        "desktop_only": true,
+        "singleton": true,
+        "show_in_taskbar": false,
+        "size": { "width": 400, "height": 600 },
+        "in_game_only": false
+      }
+    },
+    "externally_connectable": {
+      "matches": ["http://localhost:5173/*"]
+    },
+    "protocol_override_domains": {
+      "googlesyndication": "http"
+    },
+    "developer": {
+      "enable_auto_refresh": true,
+      "reload_delay": 1000
+    }
+  }
+}

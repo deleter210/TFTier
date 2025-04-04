@@ -1,21 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-const StreakTracker: React.FC = () => {
-  const [streak, setStreak] = useState<number>(0);
+interface StreakTrackerProps {
+  streak: number;
+}
 
-  useEffect(() => {
-    // Subscribe to real GEO events to update streaks.
-    const interval = setInterval(() => {
-      // Replace with actual event-based logic
-      setStreak((prev) => (Math.random() > 0.5 ? prev + 1 : 0));
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
+const StreakTracker: React.FC<StreakTrackerProps> = ({ streak }) => {
+  const isPositive = streak >= 0;
+  const streakText = isPositive ? `Win Streak: ${streak}` : `Loss Streak: ${Math.abs(streak)}`;
   return (
-    <div className="bg-gray-800 bg-opacity-50 text-white p-2 rounded mt-2">
-      <h2 className="font-bold">Streak Tracker</h2>
-      <p>Current Streak: {streak}</p>
+    <div className={`text-xl font-bold p-2 rounded bg-opacity-50 ${isPositive ? 'text-green-300 bg-green-900' : 'text-red-300 bg-red-900'}`}>
+      {isPositive ? '🔥' : '💀'} {streakText}
     </div>
   );
 };
