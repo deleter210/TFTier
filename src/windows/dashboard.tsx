@@ -1,6 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import DashboardApp from '../src/components/Dashboard/DashboardApp';
+import DashboardApp from '../components/Dashboard/DashboardApp';
 import '../src/styles.css';
 
 const container = document.getElementById('root');
