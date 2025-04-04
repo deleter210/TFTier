@@ -1,32 +1,44 @@
 import React, { useEffect, useState } from 'react';
+import Card from '../Common/Card';
+import Loader from '../Common/Loader';
+
+interface MatchInfo {
+  placement: number;
+  gold_left: number;
+  rounds: number;
+}
 
 const SummaryView: React.FC = () => {
-  const [matchData, setMatchData] = useState<any | null>(null);
+  const [matchData, setMatchData] = useState<MatchInfo | null>(null);
 
   useEffect(() => {
-    overwolf.games.events.getInfo(info => {
-      if (info?.res?.match_info) {
-        setMatchData(info.res.match_info);
+    overwolf.games.events.getInfo((info) => {
+      const data = info?.res?.match_info;
+      if (data) {
+        setMatchData({
+          placement: parseInt(data.placement || '0'),
+          gold_left: parseInt(data.gold_left || '0'),
+          rounds: parseInt(data.rounds || '0'),
+        });
       }
     });
   }, []);
 
-  if (!matchData) {
-    return <div className="p-4 text-white">Loading match summary...</div>;
-  }
-
-  const placement = matchData.placement || 'N/A';
-  const finalGold = matchData.gold_left || 0;
-  const rounds = matchData.rounds || [];
+  if (!matchData) return <Loader />;
 
   return (
-    <div className="p-4 text-gray-200 bg-gray-900 min-h-screen">
-      <h1 className="text-2xl font-bold mb-4">Post-Game Summary</h1>
-      <p className="mb-2">Placement: <span className="font-bold text-xl">{placement}</span></p>
-      <p className="mb-2">Final Gold Left: {finalGold}</p>
-      <p className="mb-4">Total Rounds: {rounds.length}</p>
-      <div className="mt-8">
-        <p className="text-lg mb-2">(More stats and graphs coming soon)</p>
+    <div className="bg-backdrop text-white min-h-screen p-8 font-sans">
+      <h1 className="text-3xl font-bold mb-6">Post-Game Summary</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <Card title="Final Placement">
+          <div className="text-4xl text-center text-gold font-bold">#{matchData.placement}</div>
+        </Card>
+        <Card title="Gold Left">
+          <div className="text-4xl text-center text-gold font-semibold">{matchData.gold_left}g</div>
+        </Card>
+        <Card title="Rounds Played">
+          <div className="text-3xl text-center">{matchData.rounds}</div>
+        </Card>
       </div>
     </div>
   );
