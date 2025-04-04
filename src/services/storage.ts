@@ -24,11 +24,10 @@ export function loadPinnedComps(): Promise<any[]> {
 
 // Save pinned team comps
 export function savePinnedComps(data: any[]): void {
-  overwolf.settings.setExtensionSettings({
-    ["tftier_comps"]: data
-  }, () => {
-    console.log("Pinned comps saved");
-  });
+  overwolf.settings.setExtensionSettings(
+    { ["tftier_comps"]: data } as unknown as overwolf.settings.GeneralExtensionSettings,
+    () => console.log("Pinned comps saved")
+  );
 }
 
 // Load cached cheat sheet
@@ -47,9 +46,8 @@ export function loadCheatSheetCache(): Promise<any> {
 
 // Save cheat sheet cache
 export function saveCheatSheetCache(data: any): void {
-  overwolf.settings.setExtensionSettings({
-    ["tftier_cache"]: data
-  }, () => {
-    console.log("Cheat sheet cache saved");
-  });
+  overwolf.settings.setExtensionSettings(
+    { ["tftier_cache"]: data } as unknown as overwolf.settings.GeneralExtensionSettings,
+    () => console.log("Cheat sheet cache saved")
+  );
 }
