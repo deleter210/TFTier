@@ -1,24 +1,36 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import AppStatusBanner from './AppStatusBanner';
 
 const DashboardApp: React.FC = () => {
-  useEffect(() => {
-    console.log("✅ DashboardApp loaded successfully.");
-  }, []);
-
   return (
-    <div className="min-h-screen bg-gray-950 text-white p-8">
-      <div className="border border-gray-700 rounded-lg p-6 shadow-xl bg-gray-900">
-        <h1 className="text-4xl font-bold text-yellow-400 mb-4">TFTier Dashboard</h1>
-        <p className="text-lg mb-2">🎯 Welcome to your TFTier control panel!</p>
-        <p className="text-sm text-gray-400">(This screen is visible when the game is not running)</p>
+    <div className="min-h-screen bg-gray-900 text-gray-100 p-6">
+      <header className="flex justify-between items-center mb-4">
+        <h1 className="text-2xl font-bold">TFTier Dashboard</h1>
+        {/* Future: SettingsPanel */}
+      </header>
 
-        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <button className="bg-yellow-500 hover:bg-yellow-600 text-black py-2 px-4 rounded">Manage Pinned Comps</button>
-          <button className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">View Past Matches</button>
-          <button className="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded">Customize Overlay</button>
-          <button className="bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded">Settings</button>
+      <AppStatusBanner />
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+        <div className="bg-gray-800 p-4 rounded shadow">
+          <h2 className="text-xl font-semibold mb-2">📌 Pinned Comps</h2>
+          {/* <PinnedCompsManager /> */}
+        </div>
+
+        <div className="bg-gray-800 p-4 rounded shadow">
+          <h2 className="text-xl font-semibold mb-2">📘 Item Cheat Sheet</h2>
+          {/* <ItemCheatSheet /> */}
         </div>
       </div>
+
+      <footer className="mt-8 flex justify-between text-sm text-gray-400">
+        <div>
+          🌍 Language: <span className="font-medium">EN</span>
+        </div>
+        <div>
+          🌓 Theme: <span className="font-medium">Dark</span>
+        </div>
+      </footer>
     </div>
   );
 };
