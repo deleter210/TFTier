@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import GoldTracker from './GoldTracker';
-import StreakTracker from './StreakTracker';
-import GoldCurveGraph from './GoldCurveGraph';
+import GoldTracker from './Gold/GoldTracker';
+import StreakTracker from './Gold/StreakTracker';
+import GoldCurveGraph from './Gold/GoldCurveGraph';
 import ItemCheatSheet from './ItemCheatSheet';
 import PinnedComps from './PinnedComps';
 
